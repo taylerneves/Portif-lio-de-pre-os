@@ -93,7 +93,8 @@ const StickyGallery = ({ tier, onClose, whatsappNumber }: StickyGalleryProps) =>
 
       <div
         ref={scrollRef}
-        className="min-h-0 flex-1 overflow-x-auto overflow-y-hidden px-4 pb-8 sm:px-6 md:px-12"
+        className="group relative h-[30vh] min-h-[220px] cursor-pointer overflow-hidden rounded-3xl border lg:h-[38vh] lg:min-h-[300px]"
+
       >
         <div className="flex h-full w-max items-center gap-4 pr-4 sm:gap-6 md:pr-12"></div>
         <div>
