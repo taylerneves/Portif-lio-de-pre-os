@@ -6,7 +6,7 @@ import { StickyGallery } from "@/components/StickyGallery";
 // ---------------------------------------------------------------------------
 // DADOS — troque textos, imagens e links reais de cada site aqui.
 // ---------------------------------------------------------------------------
-const WHATSAPP_NUMBER = "5599999999999"; // seu número com DDI + DDD, só dígitos
+const WHATSAPP_NUMBER = "5569992790761"; // seu número com DDI + DDD, só dígitos
 
 const TIERS: Tier[] = [
   {
@@ -30,10 +30,8 @@ const TIERS: Tier[] = [
     color: "#49c5b6",
     stopPercent: 0.68,
     sites: [
-      { name: "Clínica Alma", url: "https://example.com/4", img: "https://picsum.photos/seed/normal1/1200/800" },
-      { name: "Estúdio Lume", url: "https://example.com/5", img: "https://picsum.photos/seed/normal2/1200/800" },
-      { name: "Oficina Bravo", url: "https://example.com/6", img: "https://picsum.photos/seed/normal3/1200/800" },
-      { name: "Padaria Trigo", url: "https://example.com/7", img: "https://picsum.photos/seed/normal4/1200/800" },
+      { name: "Instituto Futura", url:"https://taylerneves.github.io/Dr.-Luis-Fernando-Tasca-Vilhena-RO/", img: "/imagem/dr-tasca.webp" }
+
     ],
   },
   {
@@ -44,9 +42,9 @@ const TIERS: Tier[] = [
     color: "#e8a33d",
     stopPercent: 1,
     sites: [
-      { name: "Nortium Studio", url: "https://example.com/8", img: "https://picsum.photos/seed/premium1/1200/800" },
-      { name: "Casa Aurora", url: "https://example.com/9", img: "https://picsum.photos/seed/premium2/1200/800" },
-      { name: "Voo Coletivo", url: "https://example.com/10", img: "https://picsum.photos/seed/premium3/1200/800" },
+      { name: "Céu-Tur", url: "https://taylerneves.github.io/Ceu-tur-Landing-Page-/", img: "/imagem/ceutur.webp" },
+      { name: "RT Artesanal", url: "https://rt-artesanal-perfumaria-rolim-de-mo.vercel.app/", img: "/imagem/perfumeRT.webp" },
+      { name: "Aurora Imóveis", url: "https://taylerneves.github.io/Contrutora/", img: "/imagem/auroraimoveis.webp" },
     ],
   },
 ];
