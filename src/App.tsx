@@ -30,7 +30,7 @@ const TIERS: Tier[] = [
     color: "#49c5b6",
     stopPercent: 0.68,
     sites: [
-      { name: "Instituto Futura", url:"https://taylerneves.github.io/Dr.-Luis-Fernando-Tasca-Vilhena-RO/", img: "/imagem/dr-tasca.webp" }
+      { name: "Instituto Futura", url: "https://taylerneves.github.io/Dr.-Luis-Fernando-Tasca-Vilhena-RO/", img: "/imagem/dr-tasca.webp" }
 
     ],
   },
@@ -42,11 +42,24 @@ const TIERS: Tier[] = [
     color: "#e8a33d",
     stopPercent: 1,
     sites: [
-      { name: "Céu-Tur", url: "https://taylerneves.github.io/Ceu-tur-Landing-Page-/", img: "/imagem/ceutur.webp" },
-      { name: "RT Artesanal", url: "https://rt-artesanal-perfumaria-rolim-de-mo.vercel.app/", img: "/imagem/perfumeRT.webp" },
-      { name: "Aurora Imóveis", url: "https://taylerneves.github.io/Contrutora/", img: "/imagem/auroraimoveis.webp" },
+      {
+        name: "Céu-Tur",
+        url: "https://taylerneves.github.io/Ceu-tur-Landing-Page-/",
+        img: "/imagem/ceutur.webp",
+      },
+      {
+        name: "RT Artesanal",
+        url: "https://rt-artesanal-perfumaria-rolim-de-mo.vercel.app/",
+        img: "/imagem/perfumeRT.webp",
+      },
+      {
+        name: "Aurora Imóveis",
+        url: "https://taylerneves.github.io/Contrutora/",
+        img: "/imagem/auroraimoveis.webp",
+      },
     ],
   },
+
 ];
 
 function App() {

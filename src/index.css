@@ -33,3 +33,22 @@ body{
 h1,h2,h3,h4{
   font-family:'Space Grotesk', system-ui, sans-serif;
 }
+/* Ajustes para celulares e telas estreitas. */
+@media (max-width: 640px){
+  body{
+    overflow-x:hidden;
+  }
+
+  h1{
+    font-size:clamp(30px, 10vw, 42px);
+    line-height:1.08;
+  }
+
+  .mobile-safe-area{
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+
+  .mobile-iframe{
+    min-height:70vh;
+  }
+}
