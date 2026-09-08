@@ -91,7 +91,11 @@ const StickyGallery = ({ tier, onClose, whatsappNumber }: StickyGalleryProps) =>
         </button>
       </div>
 
-      <div ref={scrollRef} className="min-h-0 flex-1 overflow-y-auto px-6 pb-32 md:px-12">
+      <div
+        ref={scrollRef}
+        className="min-h-0 flex-1 overflow-x-auto overflow-y-hidden px-4 pb-8 sm:px-6 md:px-12"
+      >
+        <div className="flex h-full w-max items-center gap-4 pr-4 sm:gap-6 md:pr-12"></div>
         <div>
           {tier?.sites.map((site, idx) => (
             <StickyCard
@@ -99,6 +103,7 @@ const StickyGallery = ({ tier, onClose, whatsappNumber }: StickyGalleryProps) =>
               site={site}
               onInView={() => setActiveSiteName(site.name)}
               isLast={idx === tier.sites.length - 1}
+              
             />
           ))}
         </div>
@@ -124,7 +129,8 @@ const StickyCard = ({
   site,
   onInView,
   isLast,
-}: {
+}:
+ {
   site: TierSite;
   onInView: () => void;
   isLast: boolean;
@@ -143,6 +149,7 @@ const StickyCard = ({
     margin: `0px 0px -${100 - vertMargin}% 0px`,
     once: true,
   });
+  
 
   useEffect(() => {
     if (isInView) {
