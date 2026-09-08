@@ -65,8 +65,8 @@ const StickyGallery = ({ tier, onClose, whatsappNumber }: StickyGalleryProps) =>
         </button>
       </div>
 
-      <div ref={scrollRef} className="min-h-0 flex-1 overflow-x-auto overflow-y-hidden px-4 pb-8 sm:px-6 md:px-12">
-        <div className="flex h-full w-max items-center gap-4 pr-4 sm:gap-6 md:pr-12">
+      <div ref={scrollRef} className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-4 pb-28 sm:px-6 md:px-12">
+        <div className="flex flex-col items-center gap-6 pb-8 sm:gap-8">
           {tier?.sites.map((site, idx) => (
             <StickyCard
               key={site.name}
@@ -140,12 +140,12 @@ const StickyCard = ({
   return (
     <motion.div
       ref={container}
-      className="relative h-[72vh] w-[84vw] shrink-0 overflow-hidden rounded-2xl bg-neutral-900 sm:h-[78vh] sm:w-[68vw] sm:rounded-[28px] lg:h-[80vh] lg:w-[54vw]"
+      className="relative aspect-video h-auto w-full max-w-5xl shrink-0 overflow-hidden rounded-2xl bg-neutral-900 sm:rounded-[28px]"
       style={{
         scale,
         filter: useTransform(filter, (v) => `brightness(${1 - v / 100})`),
         rotate: negateFilter,
-        marginRight: isLast ? "4vw" : "0",
+        marginBottom: isLast ? "4vh" : "0",
       }}
     >
       <a
