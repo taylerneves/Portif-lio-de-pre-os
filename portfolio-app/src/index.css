@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+:root{
+  --bg:#0b0d10;
+  --panel:#161a20;
+  --panel-line:#262b33;
+  --text:#f3f1ea;
+  --muted:#9aa0aa;
+}
+
+html, body, #root{
+  height:100%;
+  background:var(--bg);
+  color:var(--text);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#root::-webkit-scrollbar{
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+body{
+  margin:0;
+  font-family:'Inter', system-ui, sans-serif;
+  overscroll-behavior:none;
+}
+
+h1,h2,h3,h4{
+  font-family:'Space Grotesk', system-ui, sans-serif;
+}
