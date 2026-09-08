@@ -15,10 +15,9 @@ interface StickyGalleryProps {
   whatsappNumber: string;
 }
 
-const buildWaLink = (number: string, tierLabel: string, siteName?: string) => {
-  const message = `Olá! Vi o portfólio e quero esse: ${tierLabel}${
-    siteName ? ` – ${siteName}` : ""
-  }.`;
+const buildWaLink = (number: string, tierLabel: string) => {
+  const category = tierLabel.replace(/^Site\s+/i, "");
+  const message = `Vi o ${category} e quero ele.`;
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 };
 
@@ -27,6 +26,7 @@ const StickyGallery = ({ tier, onClose, whatsappNumber }: StickyGalleryProps) =>
   const [activeSiteName, setActiveSiteName] = useState<string | undefined>(
     tier?.sites[0]?.name,
   );
+  void activeSiteName;
 
   // Lenis dá o scroll suave dentro do painel (mesmo espírito do <ReactLenis root> do exemplo original,
   // mas escopado ao container do overlay em vez da página inteira).
@@ -106,7 +106,7 @@ const StickyGallery = ({ tier, onClose, whatsappNumber }: StickyGalleryProps) =>
 
       {tier && (
         <a
-          href={buildWaLink(whatsappNumber, tier.label, activeSiteName)}
+          href={buildWaLink(whatsappNumber, tier.label)}
           target="_blank"
           rel="noopener noreferrer"
           className="fixed bottom-7 right-5 z-10 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3.5 text-sm font-semibold text-[#06210f] shadow-[0_16px_34px_-14px_rgba(37,211,102,0.6)] transition-transform duration-200 hover:-translate-y-1 md:right-10"
