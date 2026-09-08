@@ -140,12 +140,12 @@ const StickyCard = ({
   return (
     <motion.div
       ref={container}
-      className="relative aspect-video h-auto w-full max-w-5xl shrink-0 overflow-hidden rounded-2xl bg-neutral-900 sm:rounded-[28px]"
+      className="sticky top-[5vh] relative aspect-video h-auto w-full max-w-5xl shrink-0 overflow-hidden rounded-2xl bg-neutral-900 sm:rounded-[28px]"
       style={{
         scale,
         filter: useTransform(filter, (v) => `brightness(${1 - v / 100})`),
         rotate: negateFilter,
-        marginBottom: isLast ? "4vh" : "0",
+        marginBottom: isLast ? "12vh" : "18vh",
       }}
     >
       <a
