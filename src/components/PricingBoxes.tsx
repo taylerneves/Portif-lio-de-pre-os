@@ -34,8 +34,9 @@ const PricingBoxes = ({
 }: PricingBoxesProps) => {
   const [hoveredKey, setHoveredKey] = useState<string | null>(null);
 
+  
   return (
-    <div className={cn("flex w-full gap-4", className)}>
+    <div className={cn("flex w-full flex-col gap-3 lg:flex-row lg:gap-4", className)}>
       {tiers.map((tier) => (
         <TierBox
           key={tier.key}
@@ -88,7 +89,7 @@ const TierBox = ({
       role="button"
       tabIndex={0}
       aria-label={`Ver sites do plano ${tier.label}`}
-      className="group relative h-[38vh] min-h-[300px] cursor-pointer overflow-hidden rounded-3xl border"
+      className="group relative h-[30vh] min-h-[220px] cursor-pointer overflow-hidden rounded-3xl border lg:h-[38vh] lg:min-h-[300px]"
       style={{
         borderColor: "rgba(255,255,255,0.08)",
         background: "#12151a",
