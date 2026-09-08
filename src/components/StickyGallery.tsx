@@ -44,7 +44,7 @@ const StickyGallery = ({ tier, onClose, whatsappNumber }: StickyGalleryProps) =>
   return (
     <div
       aria-hidden={!isOpen}
-      className="fixed inset-0 z-50 flex flex-col overflow-hidden bg-[#0b0d10] transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]"
+      className="fixed inset-0 z-50 flex flex-col overflow-hidden bg-[#0b0d10]  [scrollbar-width:none] [&::-webkit-scrollbar] transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]"
       style={{ transform: isOpen ? "translateY(0)" : "translateY(100%)" }}
     >
       <div className="flex items-start justify-between gap-3 px-4 pb-2 pt-5 sm:gap-6 sm:px-6 sm:pt-7 md:px-12">
@@ -145,7 +145,7 @@ const StickyCard = ({
         scale,
         filter: useTransform(filter, (v) => `brightness(${1 - v / 100})`),
         rotate: negateFilter,
-        marginBottom: isLast ? "12vh" : "18vh",
+        marginBottom: isLast ? "0px" : "18vh",
       }}
     >
       <a
