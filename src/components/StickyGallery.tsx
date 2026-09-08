@@ -5,7 +5,6 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import Lenis from "lenis";
 import { useEffect, useRef, useState } from "react";
 import type { Tier, TierSite } from "./PricingBoxes";
 
@@ -28,31 +27,6 @@ const StickyGallery = ({ tier, onClose, whatsappNumber }: StickyGalleryProps) =>
   );
   void activeSiteName;
 
-  // Lenis dá o scroll suave dentro do painel (mesmo espírito do <ReactLenis root> do exemplo original,
-  // mas escopado ao container do overlay em vez da página inteira).
-  useEffect(() => {
-    const wrapper = scrollRef.current;
-    if (!tier || !wrapper) return;
-
-    const lenis = new Lenis({
-      wrapper,
-      content: wrapper.firstElementChild as HTMLElement,
-      duration: 1.1,
-    });
-
-    let rafId: number;
-    const raf = (time: number) => {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    };
-    rafId = requestAnimationFrame(raf);
-
-    return () => {
-      cancelAnimationFrame(rafId);
-      lenis.destroy();
-    };
-  }, [tier]);
-
   useEffect(() => {
     if (tier) setActiveSiteName(tier.sites[0]?.name);
   }, [tier]);
@@ -70,15 +44,15 @@ const StickyGallery = ({ tier, onClose, whatsappNumber }: StickyGalleryProps) =>
   return (
     <div
       aria-hidden={!isOpen}
-      className="fixed inset-0 z-50 flex flex-col bg-[#0b0d10] transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]"
+      className="fixed inset-0 z-50 flex flex-col overflow-hidden bg-[#0b0d10] transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]"
       style={{ transform: isOpen ? "translateY(0)" : "translateY(100%)" }}
     >
-      <div className="flex items-start justify-between gap-6 px-6 pb-2 pt-7 md:px-12">
+      <div className="flex items-start justify-between gap-3 px-4 pb-2 pt-5 sm:gap-6 sm:px-6 sm:pt-7 md:px-12">
         <div>
-          <h2 className="text-2xl font-semibold text-[#f3f1ea]">
+          <h2 className="text-xl font-semibold text-[#f3f1ea] sm:text-2xl">
             {tier?.label ?? ""}
           </h2>
-          <p className="mt-2 max-w-[56ch] text-sm leading-relaxed text-[#9aa0aa]">
+          <p className="mt-2 max-w-[56ch] text-xs leading-relaxed text-[#9aa0aa] sm:text-sm">
             {tier?.description ?? ""}
           </p>
         </div>
@@ -91,20 +65,14 @@ const StickyGallery = ({ tier, onClose, whatsappNumber }: StickyGalleryProps) =>
         </button>
       </div>
 
-      <div
-        ref={scrollRef}
-        className="group relative h-[30vh] min-h-[220px] cursor-pointer overflow-hidden rounded-3xl border lg:h-[38vh] lg:min-h-[300px]"
-
-      >
-        <div className="flex h-full w-max items-center gap-4 pr-4 sm:gap-6 md:pr-12"></div>
-        <div>
+      <div ref={scrollRef} className="min-h-0 flex-1 overflow-x-auto overflow-y-hidden px-4 pb-8 sm:px-6 md:px-12">
+        <div className="flex h-full w-max items-center gap-4 pr-4 sm:gap-6 md:pr-12">
           {tier?.sites.map((site, idx) => (
             <StickyCard
               key={site.name}
               site={site}
               onInView={() => setActiveSiteName(site.name)}
               isLast={idx === tier.sites.length - 1}
-              
             />
           ))}
         </div>
@@ -115,7 +83,7 @@ const StickyGallery = ({ tier, onClose, whatsappNumber }: StickyGalleryProps) =>
           href={buildWaLink(whatsappNumber, tier.label)}
           target="_blank"
           rel="noopener noreferrer"
-          className="fixed bottom-7 right-5 z-10 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3.5 text-sm font-semibold text-[#06210f] shadow-[0_16px_34px_-14px_rgba(37,211,102,0.6)] transition-transform duration-200 hover:-translate-y-1 md:right-10"
+          className="mobile-safe-area fixed bottom-4 right-4 z-10 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-3 text-xs font-semibold text-[#06210f] shadow-[0_16px_34px_-14px_rgba(37,211,102,0.6)] transition-transform duration-200 hover:-translate-y-1 sm:bottom-7 sm:right-5 sm:px-5 sm:py-3.5 sm:text-sm md:right-10"
         >
           Quero esse
         </a>
@@ -130,8 +98,7 @@ const StickyCard = ({
   site,
   onInView,
   isLast,
-}:
- {
+}: {
   site: TierSite;
   onInView: () => void;
   isLast: boolean;
@@ -150,7 +117,6 @@ const StickyCard = ({
     margin: `0px 0px -${100 - vertMargin}% 0px`,
     once: true,
   });
-  
 
   useEffect(() => {
     if (isInView) {
@@ -174,14 +140,12 @@ const StickyCard = ({
   return (
     <motion.div
       ref={container}
-      className="sticky mx-auto max-w-4xl overflow-hidden rounded-[28px] bg-neutral-900"
+      className="relative h-[72vh] w-[84vw] shrink-0 overflow-hidden rounded-2xl bg-neutral-900 sm:h-[78vh] sm:w-[68vw] sm:rounded-[28px] lg:h-[80vh] lg:w-[54vw]"
       style={{
         scale,
         filter: useTransform(filter, (v) => `brightness(${1 - v / 100})`),
         rotate: negateFilter,
-        height: `${100 - 2 * vertMargin}vh`,
-        top: `${vertMargin}vh`,
-        marginBottom: isLast ? "6vh" : "8vh",
+        marginRight: isLast ? "4vw" : "0",
       }}
     >
       <a
@@ -195,9 +159,9 @@ const StickyCard = ({
           alt={site.name}
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-x-0 bottom-0 flex items-baseline justify-between gap-4 bg-gradient-to-t from-black/85 to-transparent px-6 py-5">
-          <h3 className="text-lg font-semibold text-[#f3f1ea]">{site.name}</h3>
-          <span className="whitespace-nowrap text-sm text-[#9aa0aa]">
+        <div className="absolute inset-x-0 bottom-0 flex flex-col items-start justify-between gap-1 bg-gradient-to-t from-black/85 to-transparent px-4 py-4 sm:flex-row sm:items-baseline sm:gap-4 sm:px-6 sm:py-5">
+          <h3 className="text-base font-semibold text-[#f3f1ea] sm:text-lg">{site.name}</h3>
+          <span className="text-xs text-[#9aa0aa] sm:whitespace-nowrap sm:text-sm">
             Abrir em nova aba
           </span>
         </div>
