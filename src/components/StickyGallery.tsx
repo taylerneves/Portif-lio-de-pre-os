@@ -44,10 +44,10 @@ const StickyGallery = ({ tier, onClose, whatsappNumber }: StickyGalleryProps) =>
   return (
     <div
       aria-hidden={!isOpen}
-      className="fixed inset-0 z-50 flex flex-col overflow-hidden bg-[#0b0d10]  [scrollbar-width:none] [&::-webkit-scrollbar] transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]"
+      className="fixed inset-0 z-50 flex flex-col overflow-hidden bg-[#0b0d10] transition-transform... duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]"
       style={{ transform: isOpen ? "translateY(0)" : "translateY(100%)" }}
     >
-      <div className="flex items-start justify-between gap-3 px-4 pb-2 pt-5 sm:gap-6 sm:px-6 sm:pt-7 md:px-12">
+      <div className="relative z-20 flex items-start justify-between gap-3 px-4 pb-2 pt-5 sm:gap-6 sm:px-6 sm:pt-7 md:px-12">
         <div>
           <h2 className="text-xl font-semibold text-[#f3f1ea] sm:text-2xl">
             {tier?.label ?? ""}
@@ -65,7 +65,7 @@ const StickyGallery = ({ tier, onClose, whatsappNumber }: StickyGalleryProps) =>
         </button>
       </div>
 
-      <div ref={scrollRef} className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-4 pb-28 sm:px-6 md:px-12">
+      <div ref={scrollRef} className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-4 pb-28 sm:px-6 md:px-12 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <div className="flex flex-col items-center gap-6 pb-8 sm:gap-8">
           {tier?.sites.map((site, idx) => (
             <StickyCard

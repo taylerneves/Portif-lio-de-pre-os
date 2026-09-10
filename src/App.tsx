@@ -76,7 +76,7 @@ function App() {
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-[#0b0d10] text-[#f3f1ea]">
-      <header className="relative z-10 flex items-center justify-between px-5 pt-7 md:px-16">
+      <header className="relative z-20 flex items-center justify-between px-5 pt-7 md:px-16">
         <span className="font-['Space_Grotesk'] text-sm font-semibold">
           Seu Nome — Sites
         </span>
